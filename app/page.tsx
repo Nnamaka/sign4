@@ -74,7 +74,7 @@ export default function Home() {
       />
 
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center p-6 md:p-10">
-        <div className="bg-white shadow-md rounded-md overflow-hidden max-w-md w-full border border-gray-200">
+        <div className="bg-white shadow-md  overflow-hidden max-w-md w-full border border-gray-200">
           {/* Excel Header */}
           <div className="bg-green-600 text-white p-3 flex items-center gap-2">
             <div className="font-bold text-xl">Microsoft®</div>
