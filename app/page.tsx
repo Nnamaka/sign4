@@ -2,26 +2,20 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 // import { z } from "zod";
 import { loginSchema, LoginSchema } from "@/lib/schemas/loginSchema";
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
+
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function Home() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
@@ -49,6 +43,7 @@ export default function Home() {
       if (response.ok) {
         setResponseMessage("Email sent successfully");
         console.log(result);
+        console.log(responseMessage);
       } else {
         setResponseMessage("Failed to send email");
       }
@@ -78,7 +73,7 @@ export default function Home() {
           {/* Excel Header */}
           <div className="bg-green-600 text-white p-3 flex items-center gap-3">
             <div className="h-8 w-8">
-              <img 
+              <Image 
                 src="/excel-logo.svg" 
                 alt="Excel Logo" 
                 className="h-full w-full object-contain"
