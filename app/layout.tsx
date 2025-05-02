@@ -13,16 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "File",
+  title: "Files",
   description: "Microsoft Excel Document",
-  icons: {
-    icon: [
-      { url: '/excel-icon.svg', type: 'image/svg+xml' },
-    ],
-    apple: [
-      { url: '/excel-icon.svg', type: 'image/svg+xml' }
-    ]
-  }
 };
 
 
