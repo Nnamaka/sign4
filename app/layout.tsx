@@ -13,29 +13,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Files",
+  title: "File",
   description: "Microsoft Excel Document",
   icons: {
     icon: [
-      {
-        url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftoffice/microsoftoffice-plain.svg",
-        type: "image/svg+xml",
-      }
-    ],
-    shortcut: [
-      {
-        url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftoffice/microsoftoffice-plain.svg",
-        type: "image/svg+xml",
-      }
+      { url: '/excel-icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
     ],
     apple: [
-      {
-        url: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftoffice/microsoftoffice-plain.svg",
-        type: "image/svg+xml",
-      }
+      { url: '/excel-icon.svg', type: 'image/svg+xml' }
     ]
-  },
+  }
 };
+
 
 export default function RootLayout({
   children,
