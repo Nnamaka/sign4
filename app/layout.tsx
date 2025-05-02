@@ -18,7 +18,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/excel-icon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' }
     ],
     apple: [
       { url: '/excel-icon.svg', type: 'image/svg+xml' }
