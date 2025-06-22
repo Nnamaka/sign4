@@ -68,6 +68,12 @@ export default function Home() {
         }}
       />
 
+      {/* Best Use Case Chip */}
+      <div className="absolute top-6 right-6 z-20">
+        <div className="bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+          Best use case
+        </div>
+      </div>
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center p-6 md:p-10">
         <div className="bg-white shadow-md overflow-hidden max-w-md w-full border border-gray-200">
           {/* Excel Header */}
